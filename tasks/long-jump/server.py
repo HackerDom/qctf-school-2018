@@ -1,13 +1,11 @@
-#!/usr/bin python3
+#!/usr/bin/python3
 
 import re
 
-from time import sleep
 from flask import Flask, request, render_template, make_response, redirect, url_for
 from argparse import ArgumentParser
-from urllib.parse import urlparse
 
-from teams import flags
+from tokens import flags
 
 
 app = Flask(__name__)
@@ -69,6 +67,6 @@ def extract_flag_body(token):
 
 if __name__ == '__main__':
     parser = ArgumentParser()
-    parser.add_argument('--port', required=True, type=int, default=8888)
+    parser.add_argument('--port', required=True, type=int)
     args = parser.parse_args()
     app.run(host='0.0.0.0', port=args.port, threaded=True)
