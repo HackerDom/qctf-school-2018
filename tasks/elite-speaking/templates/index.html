@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Elite Speaking</title>
+        <link rel="stylesheet" type="text/css" href="/assets/styles.css" />
+    </head>
+    <body onload="startMessaging()">
+        <div id="chatArea"></div>
+        <div id="userMessage" contenteditable="true"></div>
+        <input type="button" onclick="sendMessage()" value="Send" />
+        <script type="text/javascript">
+            secret = {{ secret }};
+        </script>
+        <script type="text/javascript" src="/assets/chat.js"></script>
+    </body>
+</html>
