@@ -2,9 +2,12 @@ from sqlalchemy import create_engine, Column, Integer, String, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship, backref, sessionmaker
 from teams_and_flags import team_data
+import os
+
+basedir = os.path.abspath(os.path.dirname(__file__))
 
 Base = declarative_base()
-engine = create_engine('sqlite:///main.db', echo=True)
+engine = create_engine('sqlite:///db/mian.db')
  
 class User(Base):
     __tablename__ = "users"

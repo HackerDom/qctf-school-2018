@@ -1,12 +1,16 @@
 #!/usr/bin/python3
 
+import logging
 from flask import Flask, session, render_template, request, redirect
 from database import init_db, check_user, get_task, update_answer, update_stage, get_user
 from task_generator import generate
 import os
 
 app = Flask(__name__)
-
+app.secret_key = b'\xd4\nUW\x93\xd6\x02,\x0c\xcc\xc0\xf6'
+app.logger.setLevel(logging.DEBUG)
+for handler in app.logger.handlers:
+    handler.setLevel(logging.DEBUG)
 
 @app.route("/")
 def home():
@@ -50,7 +54,4 @@ def login():
     return redirect('/')
 
 if __name__ == "__main__":
-    init_db()
-
-    app.secret_key = b'\xd4\nUW\x93\xd6\x02,\x0c\xcc\xc0\xf6'
     app.run()
