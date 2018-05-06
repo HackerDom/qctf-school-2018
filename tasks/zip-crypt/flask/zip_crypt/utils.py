@@ -27,7 +27,7 @@ def encrypt(data):
 
 
 def compress(data):
-    return zlib.compress(data, level=1)
+    return zlib.compress(data)
 
 
 def generate_secure_message(user_text, flag):

@@ -1,0 +1,16 @@
+version: '2'
+services:
+  zip-crypt:
+    build: ./flask
+    restart: always
+    env_file: ./production.env
+
+  nginx:
+    image: nginx
+    depends_on:
+      - zip-crypt
+    ports:
+      - "127.0.0.1:30002:80"
+    restart: always
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
