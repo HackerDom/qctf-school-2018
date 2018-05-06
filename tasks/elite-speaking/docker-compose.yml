@@ -1,0 +1,15 @@
+version: '2'
+services:
+  elite-speaking:
+    build: ./flask
+    restart: always
+
+  nginx:
+    image: nginx
+    depends_on:
+      - elite-speaking
+    ports:
+      - "127.0.0.1:30003:80"
+    restart: always
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
