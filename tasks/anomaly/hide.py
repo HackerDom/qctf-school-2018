@@ -14,6 +14,7 @@ def get_args():
     parser = ArgumentParser()
     parser.add_argument('--dir', help='output directory', required=True)
     parser.add_argument('--ratio', help='amplitude multiplier (default 0.002)', type=float, default=0.002)
+    parser.add_argument('--folders', help='put sounds in separate folders', action='store_true')
     parser.add_argument('--container', help='container to hiding a flag inside', required=True)
     return parser.parse_args()
 
@@ -54,8 +55,15 @@ if __name__ == '__main__':
     if not os.path.exists(args.dir):
         os.makedirs(args.dir)
 
+    if args.folders:
+        path = '%s/%%s/sound.wav' % args.dir
+    else:
+        path = '%s/%%s.wav' % args.dir
+
     container = load_wav_amps(args.container)
     for token, flag in flags.items():
         print('Processing token %s' % token)
         result = insert_flag(container, build_flag(flag), args.ratio)
-        save_stereo_wav('%s/%s.wav' % (args.dir, token), result)
+        if args.folders:
+            os.makedirs('%s/%s' % (args.dir, token))
+        save_stereo_wav(path % token, result)
