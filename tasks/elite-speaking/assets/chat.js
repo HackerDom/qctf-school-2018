@@ -1,5 +1,6 @@
-BOT_NAME = '8R4!N-1337';
+BOT_NAME = 'l33tb0t';
 USER_NAME = 'qctf';
+ANSWER_TIMEOUT = 1000;
 
 function buildMessage(name, text) {
     message = document.createElement('div');
@@ -21,21 +22,27 @@ function buildMessage(name, text) {
 
 function addMessage(name, text) {
     message = buildMessage(name, text);
-    document.getElementById('chatArea').appendChild(message);
+    chatArea = document.getElementById('chatArea');
+    chatArea.insertBefore(message, chatArea.firstChild);
 }
 
 function sendMessage() {
-    element = document.getElementById('userMessage');
-    text = element.innerHTML
-    element.innerHTML = ''
+    userMessage = document.getElementById('userMessage');
+    text = userMessage.value.trim();
+    userMessage.value = '';
 
     addMessage(USER_NAME, text);
-    processMessage(text.trim());
+
+    setTimeout(function() {
+        processMessage(text)
+    }, ANSWER_TIMEOUT);
 }
 
 function startMessaging() {
-    addMessage(BOT_NAME, 'h3ll0, hum4n!!1<br>ΛΛy n4m3 1s 8R4!N-1337');
+    addMessage(BOT_NAME, 'h3ll0, hum4n!!1 ΛΛy n4m3 1s ' + BOT_NAME);
     addMessage(BOT_NAME, '4v4i1abl3 c0mM4nDs:<br>- /help<br>- /flag<br>- /action');
+
+    document.getElementById('userMessage').focus();
 }
 
 function processMessage(message) {
@@ -44,7 +51,7 @@ function processMessage(message) {
             addMessage(BOT_NAME, '50rry i7’s n0t so 345y. 7ry ag41n…');
             break;
         case '/help':
-            addMessage(BOT_NAME, 'l1st 0f 4ct1on5:<br>- vvr!73 7h3 ffL46<br>- will be continued...');
+            addMessage(BOT_NAME, 'l1st 0f 4ct1on5:<br>- vvr!73 7h3 ffL46');
             break;
         case '/action vvr!73 7h3 ffL46':
             addMessage(BOT_NAME, 'g00d jo8!!11 y0vr fl4g i5 ' + decodeFlag(message.substr(8)));
@@ -57,15 +64,10 @@ function processMessage(message) {
 
 function decodeFlag(message) {
     message = message.split('').reverse().join('\x1b');
-    
-    ord = [];
-    for (var char in message) {
-        ord.push(message.charCodeAt(char));
-    }
 
     result = [];
-    for (var i = 0; i < ord.length; i++)
-        result.push(String.fromCharCode((ord[i] ^ secret[i]) - 1));
+    for (var i = 0; i < message.length; i++)
+        result.push((message.charCodeAt(i) ^ secret[i]) - 1);
 
-    return result.join('');
+    return String.fromCharCode.apply(0, result);
 }

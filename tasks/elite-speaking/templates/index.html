@@ -6,12 +6,14 @@
         <link rel="stylesheet" type="text/css" href="/assets/styles.css" />
     </head>
     <body onload="startMessaging()">
-        <div id="chatArea"></div>
-        <div id="userMessage" contenteditable="true"></div>
-        <input type="button" onclick="sendMessage()" value="Send" />
-        <script type="text/javascript">
-            secret = {{ secret }};
-        </script>
+        <div class="wrapper">
+            <div id="chatArea"></div>
+            <form action="#" onsubmit="sendMessage(); return false;">
+                <input type="text" id="userMessage" />
+                <input type="submit" value="Send" class="sendButton" />
+            </form>
+        </div>
+        <script type="text/javascript">secret = {{ secret }};</script>
         <script type="text/javascript" src="/assets/chat.js"></script>
     </body>
 </html>
