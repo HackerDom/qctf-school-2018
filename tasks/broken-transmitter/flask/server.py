@@ -3,7 +3,6 @@
 import time
 
 from flask import Flask, request, render_template, redirect, url_for
-from argparse import ArgumentParser
 
 from tokens import flags
 from reader import Reader
@@ -32,7 +31,4 @@ def show(token):
 
 
 if __name__ == '__main__':
-    parser = ArgumentParser()
-    parser.add_argument('--port', required=True, type=int)
-    args = parser.parse_args()
-    app.run(host='0.0.0.0', port=args.port, threaded=True)
+    app.run(threaded=True)
