@@ -8,7 +8,7 @@ def getenv(key):
     return value
 
 
-CYPHER_TYPE = getenv('CYPHER_TYPE')
+CIPHER_TYPE = getenv('CIPHER_TYPE')
 
 FLAG_MANAGER_SECRET = getenv('FLAG_MANAGER_SECRET')
 TASK_NAME = 'zip_crypt'

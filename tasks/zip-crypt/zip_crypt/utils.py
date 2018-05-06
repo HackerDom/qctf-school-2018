@@ -1,7 +1,7 @@
 import os
 import zlib
 
-from zip_crypt.settings import CYPHER_TYPE
+from zip_crypt.settings import CIPHER_TYPE
 from zip_crypt.crypto import aes128cbc_encrypt, aes128ctr_encrypt
 
 
@@ -18,9 +18,9 @@ def stream_encrypt(plaintext):
 
 
 def encrypt(data):
-    if CYPHER_TYPE == 'block':
+    if CIPHER_TYPE == 'block':
         return block_encrypt(data)
-    elif CYPHER_TYPE == 'stream':
+    elif CIPHER_TYPE == 'stream':
         return stream_encrypt(data)
     else:
         raise ValueError('CYPHER_TYPE should be set to either \'block\' or \'stream\'')
