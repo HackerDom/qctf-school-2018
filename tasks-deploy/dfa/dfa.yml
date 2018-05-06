@@ -1,0 +1,7 @@
+!Task
+name: dfa
+max_score: 500
+checker: !SimplePyChecker
+  source_path: check.py
+statement_generator: !SimplePyStatementGenerator
+  source_path: generate.py
