@@ -1,0 +1,7 @@
+!Task
+name: confusing-numbers
+max_score: 150
+checker: !SimplePyChecker
+  source_path: check.py
+statement_generator: !SimplePyStatementGenerator
+  source_path: generate.py
