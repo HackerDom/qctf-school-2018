@@ -11,6 +11,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . /app
 
 RUN mkdir db
+RUN python3 init_db.py
+
+RUN chown -R www-data:www-data db
 RUN chmod -R a+rw db
 
 EXPOSE 80
