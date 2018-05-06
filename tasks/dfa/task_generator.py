@@ -28,12 +28,10 @@ def create_task(team, flag, task_content):
     for i, x in enumerate(alpha):
         arr[(ord(x))] = i+1
     
-    os.makedirs(os.path.join(DIRNAME, team))
-
-    with open(os.path.join(DIRNAME, team, 'task.s'), 'w') as f:
+    with open(os.path.join(DIRNAME, '{}.s'.format(team)), 'w') as f:
         f.write(task_content.replace('placeholder', ','.join(map(str, arr))))
-    subprocess.call([os.path.join(os.curdir,'compile.sh'), os.path.join(DIRNAME, team, 'task')])
-    os.remove(os.path.join(DIRNAME, team, 'task.s'))
+    subprocess.call([os.path.join(os.curdir,'compile.sh'), os.path.join(DIRNAME, team)])
+    os.remove(os.path.join(DIRNAME, '{}.s'.format(team)))
 
 if __name__ == "__main__":
     seed(0xdeaddaed)
@@ -46,9 +44,9 @@ if __name__ == "__main__":
         task_content = f.read()
 
     data = []
-    for x in generate():
-        create_task(*x, task_content)
-        data.append(x)
+    for team, flag in generate():
+        create_task(team, flag, task_content)
+        data.append((team, 'QCTF{{{}}}'.format(flag)))
     
     with open('teams_and_flags.py','w') as f:
         f.write(str(data))
