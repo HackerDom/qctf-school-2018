@@ -60,10 +60,12 @@ if __name__ == '__main__':
     else:
         path = '%s/%%s.wav' % args.dir
 
+    i = 0
     container = load_wav_amps(args.container)
     for token, flag in flags.items():
-        print('Processing token %s' % token)
+        print('%d: Processing token %s' % (i, token))
         result = insert_flag(container, build_flag(flag), args.ratio)
         if args.folders:
             os.makedirs('%s/%s' % (args.dir, token))
         save_stereo_wav(path % token, result)
+        i += 1
