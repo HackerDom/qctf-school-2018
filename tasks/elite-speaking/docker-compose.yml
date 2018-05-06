@@ -9,7 +9,7 @@ services:
     depends_on:
       - elite-speaking
     ports:
-      - "127.0.0.1:30003:80"
+      - "127.0.0.1:30004:80"
     restart: always
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
