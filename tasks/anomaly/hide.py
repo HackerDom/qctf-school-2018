@@ -22,10 +22,10 @@ def get_args():
 def load_wav_amps(path):
     with wave.open(path, 'rb') as wav:
         raw = wav.readframes(wav.getnframes())
-        amps = []
-        for i in range(0, len(raw), 2):
-            amps.append(struct.unpack('<h', raw[i:i+2])[0])
-        return amps
+    amps = []
+    for i in range(0, len(raw), 2):
+        amps.append(struct.unpack('<h', raw[i:i+2])[0])
+    return amps
 
 
 def save_stereo_wav(path, amps):
@@ -45,7 +45,7 @@ def build_flag(flag):
 def insert_flag(container, flag, ratio):
     result = []
     for c, f in zip(container, cycle(flag)):
-        result += [c, c + int(f * ratio)]
+        result.extend([c, c + int(f * ratio)])
     return result
 
 

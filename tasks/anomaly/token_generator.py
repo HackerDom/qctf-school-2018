@@ -9,15 +9,15 @@ from argparse import ArgumentParser
 from Crypto.Util.number import bytes_to_long
 
 
-secret = 'pleAsed0ntgue$$_'
+ALPHABET = ascii_lowercase + ascii_uppercase + digits
 
 
 def genstr(length, alpha):
     return ''.join([random.choice(alpha) for _ in range(length)])
 
 
-def gentoken(str):
-    return md5((secret + str + secret).encode()).hexdigest()
+def gentoken():
+    return md5(genstr(random.randint(100, 200), ALPHABET).encode()).hexdigest()
 
 
 parser = ArgumentParser()
@@ -26,7 +26,7 @@ parser.add_argument('--seed', help='seed for a random generator (string)', requi
 parser.add_argument('--count', help='teams count', type=int, default=1000)
 parser.add_argument('--pretty', help='use \\n to separate tokens', action='store_true')
 parser.add_argument('--length', help='random string length', type=int, default=5)
-parser.add_argument('--alpha', help='alphabet to generate random string', default=ascii_lowercase+ascii_uppercase+digits)
+parser.add_argument('--alpha', help='alphabet to generate random string', default=ALPHABET)
 args = parser.parse_args()
 
 random.seed(bytes_to_long(args.seed.encode()))
@@ -36,7 +36,7 @@ while len(tokens) < args.count:
     s = genstr(args.length, args.alpha)
     if s in tokens.values():
         continue
-    t = gentoken(s)
+    t = gentoken()
     if t in tokens:
         continue
     tokens[t] = args.mask % s
