@@ -27,10 +27,14 @@ class FlagManager:
             iv = base64url_encode(os.urandom(16))
         if flag_secret is None:
             flag_secret = base64url_encode(os.urandom(16))
-        return f'{key};{iv};{flag_secret}'
+        return '{};{};{}'.format(key, iv, flag_secret)
 
     def team_hash(self, team_id):
-        return hashlib.sha256(f'{team_id};{self._task_name};{self._flag_secret}'.encode('utf-8')).hexdigest()
+        return hashlib.sha256(
+            '{};{};{}'
+            .format(team_id, self._task_name, self._flag_secret)
+            .encode('utf-8')
+        ).hexdigest()
 
     def flag_by_team_id(self, team_id):
         team_hash = self.team_hash(team_id)

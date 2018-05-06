@@ -20,7 +20,8 @@ def decode_team_id(token, task_name, key, iv):
     token_payload = json.loads(decrypted_token.decode('utf-8'))
     token_task_name = token_payload.get('task')
     if token_task_name != task_name:
-        raise ValueError(f'Task name mismatch in the token. Expected: {task_name}, actual: {token_task_name}')
+        raise ValueError('Task name mismatch in the token. Expected: {}, actual: {}'
+                         .format(task_name, token_task_name))
     return int(token_payload['team'])
 
 

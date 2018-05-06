@@ -4,7 +4,7 @@ import os
 def getenv(key):
     value = os.getenv(key)
     if value is None:
-        raise ValueError(f'Please provide a value for the environment variable {key}')
+        raise ValueError('Please provide a value for the environment variable {}'.format(key))
     return value
 
 

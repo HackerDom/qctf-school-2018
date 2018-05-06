@@ -31,6 +31,6 @@ def compress(data):
 
 
 def generate_secure_message(user_text, flag):
-    secret_text = f'Long time no see! {flag}'
-    data = f'{secret_text}\n{user_text}'.encode('utf-8')
+    secret_text = 'Long time no see! {}'.format(flag)
+    data = '{}\n{}'.format(secret_text, user_text).encode('utf-8')
     return encrypt(compress(data))
