@@ -3,7 +3,6 @@
 import re
 
 from flask import Flask, request, render_template, make_response, redirect, url_for
-from argparse import ArgumentParser
 
 from tokens import flags
 
@@ -66,7 +65,4 @@ def extract_flag_body(token):
 
 
 if __name__ == '__main__':
-    parser = ArgumentParser()
-    parser.add_argument('--port', required=True, type=int)
-    args = parser.parse_args()
-    app.run(host='0.0.0.0', port=args.port, threaded=True)
+    app.run(threaded=True)
