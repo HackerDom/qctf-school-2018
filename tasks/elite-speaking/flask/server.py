@@ -40,7 +40,4 @@ def encode_flag(flag):
 
 
 if __name__ == '__main__':
-    parser = ArgumentParser()
-    parser.add_argument('--port', required=True, type=int)
-    args = parser.parse_args()
-    app.run(host='0.0.0.0', port=args.port, threaded=True)
+    app.run(threaded=True)
