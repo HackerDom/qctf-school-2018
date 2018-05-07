@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define TOKENS_FILENAME "/usr/share/tokens/tokens"
+#define TOKENS_FILENAME "/etc/tokens/tokens"
 
 #define TOKEN_LENGTH 32
 #define FLAG_LENGTH 36
@@ -29,10 +29,15 @@ char* extract_flag(char* token) {
 
     while (fscanf(fp, "%s %s\n", read_token, read_flag) != EOF) {
         if (!strncmp(token, read_token, TOKEN_LENGTH)) {
+            free(read_token);
+
             fclose(fp);
             return read_flag;
         }
     }
+
+    free(read_token);
+    free(read_flag);
 
     fclose(fp);
     return NULL;
@@ -45,10 +50,13 @@ int main(int argc, char* argv[]) {
     if (argc > 1) {
         flag = extract_flag(argv[1]);
 
-        if (flag)
+        if (flag) {
             printf("Your flag: %s\n", flag);
-        else
+            free(flag);
+        }
+        else {
             printf("Incorrect team token.\n");
+        }
 
         return 0;
     }
