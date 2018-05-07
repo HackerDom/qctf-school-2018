@@ -4,9 +4,9 @@ service oil
   socket_type = stream
   protocol = tcp
   wait = no
-  user = root
+  user = oil
   bind = 0.0.0.0
-  server = /run.sh
+  server = /home/oil/oil
   type = UNLISTED
   port = 9999
 }
