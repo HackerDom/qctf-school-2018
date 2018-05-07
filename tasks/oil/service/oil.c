@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 /*  
 
@@ -67,6 +68,10 @@ void manage(void) {
 
 
 int main(int argc, char **argv) {
+    setbuf(stdin, 0);
+    setbuf(stdout, 0);
+    setbuf(stderr, 0);
+
     printf("Welcome to Oil Platform Manager!\n");
     
     manage();
