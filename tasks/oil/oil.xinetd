@@ -6,7 +6,7 @@ service oil
   wait = no
   user = root
   bind = 0.0.0.0
-  server = /run.sh
+  server = /chroot_run.sh
   type = UNLISTED
   port = 9999
 }
