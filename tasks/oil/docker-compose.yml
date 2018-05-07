@@ -1,0 +1,7 @@
+version: '2'
+services:
+  oil:
+    build: .
+    restart: always
+    ports:
+      - "0.0.0.0:20001:9999"
