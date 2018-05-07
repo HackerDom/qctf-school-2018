@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Требуется авторизация</title>
+    <link rel="stylesheet" href="/static/index.css">
+</head>
+<body>
+<div class="content">
+    <div class="title">Авторизация</div>
+    {% if error %}
+        <div class="notification error">{{ error }}</div>
+    {% endif %}
+    <form method="post" class="form">
+        <input type="text" name="login" placeholder="Логин" required/>
+        <input type="password" name="password" placeholder="Пароль" required/>
+        <input type="hidden" class="token" name="token" value="">
+        <input type="submit" value="Вход">
+    </form>
+</div>
+<script src="/static/index.js"></script>
+</body>
+</html>
