@@ -4,8 +4,6 @@
 #include <stdint.h>
 #include <stdlib.h>
 
-int DEBUG_MODE = 1;
-
 int silly_power(int base, int n)
 {	
 	int p = 1;
@@ -79,8 +77,9 @@ char *broken_caesar(char *text)
 
 void break_everything(char* substr1, char* substr2, char* substr3)
 {
+	char* debug_mode = "debug";
 	printf("\nYour flag is generated!\n");
-	if (DEBUG_MODE == 1)
+	if  (strcmp(debug_mode, "debug") == 0)
 		printf("QCTF{%s%s%s}\n", substr1, substr2, substr3);
 	else
 		printf("...But you're not allowed to see it. Ahahaha :D\n");
