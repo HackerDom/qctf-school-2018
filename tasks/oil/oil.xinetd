@@ -9,4 +9,7 @@ service oil
   server = /chroot_run.sh
   type = UNLISTED
   port = 9999
+  log_type = FILE /var/xinetd.log
+  log_on_success = HOST PID DURATION EXIT
+  log_on_failure = HOST ATTEMPT
 }
