@@ -73,7 +73,7 @@ STATEMENT_TEMPLATE = \'\'\'
 Ваш токен: `{0}`
 Пример: `./getflag {0}`
 [auth](/static/files/<task.id>/auth)
-[libc.c](/static/files/<task.id>/libc.so.6)
+[libc.so.6](/static/files/<task.id>/libc.so.6)
 \'\'\'
 
 def generate(context):
