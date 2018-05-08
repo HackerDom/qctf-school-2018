@@ -3,7 +3,9 @@ tokens = ['KNIAJRPREP4ULQKZEQER0HSRDJF3O7Z8', 'L5J7E0PI3INYJQSBPCTUQUUTMDPU6KN9'
 TITLE = "Флагогенератор"
 STATEMENT_TEMPLATE = '''Хочешь получить флаг? Ничего сложного, просто скажи мне свой токен и я скажу кто... в смысле, флаг сгенерирую, да :)
 
-Вот токен: {0}'''
+Вот токен: {0}
+[flagogenerator](/static/files/<task.id>/flagogenerator)
+'''
 
 def generate(context):
     participant = context['participant']
