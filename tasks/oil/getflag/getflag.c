@@ -20,8 +20,8 @@ char* extract_flag(char* token) {
     char* read_token;
     char* read_flag;
 
-    read_token = malloc(TOKEN_LENGTH);
-    read_flag = malloc(FLAG_LENGTH);
+    read_token = malloc(TOKEN_LENGTH + 1);
+    read_flag = malloc(FLAG_LENGTH + 1);
 
     fp = fopen(TOKENS_FILENAME, "r");
     if (!fp)
