@@ -74,6 +74,10 @@ void choose(void) {
 
 
 int main(int argc, char* argv) {
+    setbuf(stdin, 0);
+    setbuf(stdout, 0);
+    setbuf(stderr, 0);
+    
     welcome();
     choose();
 
