@@ -4,4 +4,4 @@ STATEMENT_TEMPLATE = '''В этой библиотеке можно прочит
 [library](/static/files/<task.id>/library)'''
 
 def generate(context):
-    return TaskStatement(TITLE, STATEMENT)
+    return TaskStatement(TITLE, STATEMENT_TEMPLATE)
