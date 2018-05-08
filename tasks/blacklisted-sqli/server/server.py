@@ -41,10 +41,6 @@ class IndexView(web.View):
             return web.Response(text=token)
 
         response = render_template('index.html', self.request, None)
-        response.headers['Cache-Control'] =\
-            'no-cache, no-store, must-revalidate'
-        response.headers['Pragma'] = 'no-cache'
-        response.headers['Expires'] = '0'
         return response
 
     async def post(self):
@@ -125,10 +121,12 @@ async def main():
 
 
 if __name__ == '__main__':
+    logs_directory = os.path.join('.', 'logs')
+    os.makedirs(logs_directory, exist_ok=True)
     logging.basicConfig(
         level=logging.DEBUG,
         format='[%(asctime)s] [%(levelname)s] %(message)s)',
-        filename=os.path.join('.', 'logs', 'log.txt')
+        filename=os.path.join(logs_directory, 'log.txt')
     )
     loop = asyncio.get_event_loop()
     loop.run_until_complete(main())
