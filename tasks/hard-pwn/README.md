@@ -4,7 +4,7 @@
  - specify path for tokens file in [configure.py](./configure.py)
  - run `python3 configure.py`
 
-It will generate `main` and `getflag` binaries in the respective directories.
+It will generate `main`, `getflag`, `check.py` and `generate.py` binaries in the respective directories.
 
 # FILES FOR TASK
  - `libc.so.6`
