@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 #define FIELD_LENGTH 64
@@ -6,7 +7,10 @@
 
 void welcome(void) {
     printf("Welcome to our library!\nHere are our books:\n\n");
-    system("ls | grep .txt | cat");
+    printf("book1.txt\n");
+    printf("book2.txt\n");
+    printf("flag.txt\n");
+    printf("book3.txt\n");
     printf("\nEnter the name of a book you want to read:\n");
 }
 
