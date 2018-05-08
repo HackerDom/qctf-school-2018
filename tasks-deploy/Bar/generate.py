@@ -2,7 +2,7 @@
 STATEMENT_TEMPLATE = '''
 Кто-то оставил сообщение...
 
-Сообщение: {}
+Сообщение: `{}`
 '''
 
 def generate(context):

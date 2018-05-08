@@ -2,8 +2,8 @@
 STATEMENT_TEMPLATE = '''
 Нашего повара похитили. Он оставил какой-то рецепт, мы перехватили радиограмму, кажется всё это связано...
 
-Радиограмма: {}
-[файлик](/static/files/<task.id>/task.chef)
+Радиограмма: `{}`
+[Рецепт](/static/files/<task.id>/task.chef)
 '''
 
 def generate(context):
