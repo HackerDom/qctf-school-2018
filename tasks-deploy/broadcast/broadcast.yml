@@ -1,0 +1,7 @@
+!Task
+name: broadcast
+max_score: 400
+checker: !SimplePyChecker
+  source_path: check.py
+statement_generator: !SimplePyStatementGenerator
+  source_path: generate.py
