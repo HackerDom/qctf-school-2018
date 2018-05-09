@@ -47,4 +47,4 @@ def return_file_bytes(start, end, full_content):
 
 
 if __name__ == '__main__':
-    app.run("0.0.0.0", 8080, threaded=True)
+    app.run(threaded=True)
