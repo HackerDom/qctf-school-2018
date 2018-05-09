@@ -11,15 +11,9 @@ from generator import generate_field
 
 app = Flask(__name__)
 
-FIELDS = dict() # use init_fields()
 FLAG_SYMBOLS = ascii_uppercase + ascii_lowercase + digits + '{}_'
 
-
-def init_fields():
-    global FIELDS
-
-    for symbol in FLAG_SYMBOLS:
-        FIELDS[symbol] = generate_field(symbol)
+FIELDS = {symbol: generate_field(symbol) for symbol in FLAG_SYMBOLS}
 
 
 @app.route('/')
@@ -100,5 +94,4 @@ def dump_error(message):
 
 
 if __name__ == '__main__':
-    init_fields()
-    app.run(host='0.0.0.0', port=8080, threaded=True)
+    app.run(threaded=True)
