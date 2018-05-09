@@ -8,14 +8,13 @@ import os.path
 import shutil
 
 ALPHABET = string.ascii_uppercase+string.digits
-
 VENDORS = ['JetFlash', 'Atmel Corp.', 'HP', 'Kingston', 'Saitek', 'Toshiba']
 with open('flags.json') as file:
     FLAGS = json.load(file)
 DIRNAME = 'tasks'
 LOG_PATH = './clear_log.log'
 
-template = '''{attach} ubuntu-Lenovo-G500 kernel: usb 3-1: new high-speed USB device number 2 using xhci_hcd
+TEMPLATE = '''{attach} ubuntu-Lenovo-G500 kernel: usb 3-1: new high-speed USB device number 2 using xhci_hcd
 {attach} ubuntu-Lenovo-G500 kernel: usb 3-1: New USB device found, idVendor=8564, idProduct=1000
 {attach} ubuntu-Lenovo-G500 kernel: usb 3-1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
 {attach} ubuntu-Lenovo-G500 kernel: usb 3-1: Product: Mass Storage Device
@@ -119,7 +118,7 @@ def generate_usb_event(lines, index, date_part, flag_letter):
     str_attach = parsed.strftime(fmt)
     str_deattach = deattach.strftime(fmt)
     vendor, serial = generate_flash()
-    event = template.format(attach=str_attach, flag_letter=flag_letter,
+    event = TEMPLATE.format(attach=str_attach, flag_letter=flag_letter,
                             deattach=str_deattach, vendor=vendor, serial=serial)
     with_endings = map(lambda st: st+'\n', event.split('\n'))
     return insert(lines, index, with_endings)
