@@ -1,5 +1,5 @@
 var oReq = new XMLHttpRequest();
-oReq.open("GET", "/coordinates.gif", true);
+oReq.open("GET", "coordinates.gif", true);
 oReq.responseType = "arraybuffer";
 
 oReq.onload = function(oEvent) {
