@@ -7,26 +7,16 @@ RUN apt-get install -y xinetd libc6-i386 && \
 
 
 RUN useradd -M oil
-RUN useradd --no-create-home --shell /bin/false getflag
+RUN useradd -M --shell /bin/false getflag
 
 
 COPY ./oil.xinetd /etc/xinetd.d/oil
 RUN chmod 400 /etc/xinetd.d/oil
 
 
-COPY ./chroot_run.sh /chroot_run.sh
-RUN chmod 100 /chroot_run.sh
-
-
-COPY ./xinetd_start.sh /xinetd_start.sh
-RUN chmod 100 /xinetd_start.sh
-
-
 RUN mkdir /chroot
 WORKDIR /chroot
 
-RUN echo "cd /home/oil && ./oil" >./start.sh
-RUN chmod 555 ./start.sh
 
 RUN cp -R /lib* . && \
     cp -R /usr/lib* .
@@ -38,36 +28,43 @@ RUN mkdir ./dev && \
     mknod ./dev/urandom c 1 9 && \
     chmod 666 ./dev/*
 
-RUN mkdir ./bin && \
-    cp /bin/sh ./bin && \
-    cp /bin/ls ./bin && \
-    cp /bin/cat ./bin && \
-    cp /bin/pwd ./bin && \
-    cp /bin/bash ./bin && \
-    cp /usr/bin/whoami ./bin
+RUN mkdir ./bin/ && \
+    cp /bin/sh ./bin/ && \
+    cp /bin/ls ./bin/ && \
+    cp /bin/cat ./bin/ && \
+    cp /bin/pwd ./bin/ && \
+    cp /bin/bash ./bin/ && \
+    cp /usr/bin/whoami ./bin/
 
-RUN mkdir ./etc && \
-    cp /etc/passwd ./etc
+RUN mkdir ./etc/ && \
+    cp /etc/passwd ./etc/
 
-RUN mkdir -p ./home/oil
+
+RUN mkdir -p ./home/oil/
+
+RUN echo "cd /home/oil/ && ./oil" >./start.sh
+RUN chmod 555 ./start.sh
 
 RUN chown -R root:root .
 
 
-COPY ./service/oil ./home/oil/oil
-RUN chmod 111 ./home/oil/oil
-
-COPY ./getflag/getflag ./home/oil/getflag
+COPY ./getflag/getflag ./home/oil/
 RUN chown -R getflag:getflag ./home/oil/getflag && \
     chmod 111 ./home/oil/getflag && \
     chmod +s ./home/oil/getflag
 
-RUN mkdir -p ./etc/tokens
-COPY ./getflag/tokens ./etc/tokens/tokens
-RUN chown -R root:getflag ./etc/tokens/tokens && \
-    chmod 440 ./etc/tokens/tokens
+COPY ./getflag/tokens ./etc/tokens
+RUN chown -R root:getflag ./etc/tokens && \
+    chmod 440 ./etc/tokens
 
+COPY ./service/oil ./home/oil/
+RUN chmod 111 ./home/oil/oil
+
+
+COPY ./xinetd_start.sh /xinetd_start.sh
+RUN chmod 100 /xinetd_start.sh
 
 CMD ["/xinetd_start.sh"]
+
 
 EXPOSE 9999

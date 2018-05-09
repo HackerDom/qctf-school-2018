@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define TOKENS_FILENAME "/etc/tokens/tokens"
+#define TOKENS_FILENAME "/etc/tokens"
 
 #define TOKEN_LENGTH 32
 #define FLAG_LENGTH 36

@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define TOKENS_FILENAME "/etc/tokens/tokens"
+#define TOKENS_FILENAME "/etc/tokens"
 %%%INSERT_DEFINES_HERE%%%
 
 void usage(char* name) {
