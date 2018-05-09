@@ -13,11 +13,11 @@ function runner(text) {
         textarea.append("<br>");
         i = 0;
       }
-    }, Math.floor(Math.random() * 120) + 50);
+    }, Math.floor(Math.random() * 70) + 30);
 }
 
 textarea.append("<br>");
-var socket = new WebSocket("ws://" + window.location.host + "/broadcast");
+var socket = new WebSocket("ws://" + window.location.host + window.location.pathname + "/broadcast");
 socket.onmessage = function (event) {
     if (typeof event.data === "string"){
         runner(event.data)

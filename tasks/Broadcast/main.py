@@ -1,30 +1,42 @@
 from sanic import Sanic, response
 import asyncio
+from hashlib import sha1
+
+from flags import FLAGS as TOKENS
 
 app = Sanic(__name__)
 app.static('/static', './static')
 
-FLAG = "QCTF{{y0u_h4ve_13arnt_w3bs0cket_m4agic_{}}}".format("abrakadabra")
 
-MESSAGES = ["> Wake up, hero!", "> We need your help!", "> Hurry up!", "> Sending our coordinates..."]
+SECRET = "secret? really?"
+MESSAGES = ["< Wake up, hero!", "< We need your help!", "< Hurry up!", "< Sending our coordinates..."]
 with open("index.html") as index:
     INDEX_PAGE = index.read()
 
 
-@app.route('/')
-async def index(request):
+@app.route('/<token>/')
+async def index(request, token):
+    if token not in TOKENS:
+        return response.text("Not Found! \nIncorrect token could be used!", 404)
     return response.html(INDEX_PAGE)
 
 
-@app.websocket('/broadcast')
-async def feed(request, ws):
+@app.websocket('/<token>/broadcast')
+async def feed(request, ws, token):
+    if token not in TOKENS:
+        return response.text("Not Found! \nIncorrect token could be used!", 404)
     for msg in MESSAGES:
         await asyncio.sleep(4)
         await ws.send(msg)
-        await asyncio.sleep(8)
-    await ws.send(b'now, send us this \'alohomora\' key as bytes and we will open you our coords...')
-    if await ws.recv() == b'alohomora':
-        await ws.send(FLAG)
+        await asyncio.sleep(7)
+
+    await ws.send(
+        b'now, send us back this \'' +
+        sha1((token + SECRET).encode()).hexdigest().encode('ascii') +
+        b'\' key as bytes and we will send you our coords...'
+    )
+    if await ws.recv() == sha1((token + SECRET).encode()).hexdigest().encode('ascii'):
+        await ws.send(TOKENS[token])
     ws.close()
 
 
