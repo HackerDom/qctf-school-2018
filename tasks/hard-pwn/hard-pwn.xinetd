@@ -1,0 +1,16 @@
+service hard-pwn
+{
+  disable = no
+  protocol = tcp
+  socket_type = stream
+  type = UNLISTED
+  bind = 0.0.0.0
+  port = 9999
+  wait = no
+  user = root
+  server = /usr/sbin/chroot
+  server_args = --userspec=auth:auth /chroot /start.sh
+  log_type = FILE /var/xinetd.log
+  log_on_success = HOST PID DURATION EXIT
+  log_on_failure = HOST ATTEMPT
+}

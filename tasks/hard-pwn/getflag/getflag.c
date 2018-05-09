@@ -3,7 +3,7 @@
 #include <string.h>
 
 
-#define TOKENS_FILENAME "/tmp/hard-pwn/tokens"
+#define TOKENS_FILENAME "/etc/tokens"
 #define TOKEN_LENGTH    40
 #define FLAG_LENGTH     50
 
