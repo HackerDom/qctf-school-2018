@@ -59,7 +59,8 @@ void login_panel(void) {
 
     fprintf(stdout, "\x1b[36m[*]\x1b[0m Input \e[1msecret key\e[0m: ");
 
-    scanf("%ld", key);
+    getchar();
+    read(0, key, 10);
     fflush(stdin);
 
     if (key != 0xdeadbeef) {
@@ -67,20 +68,22 @@ void login_panel(void) {
         exit(1);
     }
     
-    printf("\x1b[32m[+]\x1b[0m Logged in\n");
+    fprintf(stdout, "\x1b[32m[+]\x1b[0m Logged in\n");
     
-    printf("\x1b[36m[*]\x1b[0m Enter command: ");
-    fgets(&command, 200, stdin);
+    fprintf(stdout, "\x1b[36m[*]\x1b[0m Enter command: ");
+    fgets(&command, 250, stdin);
     
     if (debug)
         process(command);
 }
 
 int main(int argc, char **argv) {
-    setbuf(stdin, 0);
-    setbuf(stdout, 0);
-    setbuf(stderr, 0);
+    setvbuf(stdin, NULL, _IONBF, 0);
+    setvbuf(stdout, NULL, _IONBF, 0);
+    setvbuf(stderr, NULL, _IONBF, 0);
 
     welcome();
     login_panel();
+    
+    fprintf(stdout, "Bye-bye.\n");
 }
