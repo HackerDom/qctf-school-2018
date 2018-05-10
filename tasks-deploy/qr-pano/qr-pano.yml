@@ -1,5 +1,5 @@
 !Task
-name: mysterious-photo
+name: qr-piano
 max_score: 100
 checker: !SimplePyChecker
   source_path: check.py

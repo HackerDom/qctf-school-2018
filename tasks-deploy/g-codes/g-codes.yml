@@ -1,5 +1,5 @@
 !Task
-name: confusing-numbers
+name: g-codes
 max_score: 150
 checker: !SimplePyChecker
   source_path: check.py
