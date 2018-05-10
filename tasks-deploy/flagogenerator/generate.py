@@ -6,8 +6,7 @@ STATEMENT_TEMPLATE = '''
 
 Ничего сложного, просто скажи мне свой токен и я скажу кто... в смысле, флаг сгенерирую, да :)
 
-Вот токен: {0}
-[flagogenerator](/static/files/<task.id>/flagogenerator)
+[flagogenerator](/static/files/<task.id>/{0}/flagogenerator)
 '''
 
 def generate(context):
