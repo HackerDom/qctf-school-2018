@@ -1,5 +1,5 @@
 !Task
-name: qr-piano
+name: qr-pano
 max_score: 100
 checker: !SimplePyChecker
   source_path: check.py
