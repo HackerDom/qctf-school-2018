@@ -5,7 +5,7 @@ TITLE = "Старый друг"
 STATEMENT_TEMPLATE = '''
 !!! (мой друг Таппер, диалог итд) !!!
 
-[message.txt](/static/files/<task.id>/{0}/message.txt)
+[number.txt](/static/files/<task.id>/{0}/number.txt)
 '''
 
 def generate(context):
