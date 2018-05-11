@@ -28,7 +28,12 @@ function strip(str, remove) {
 }
 
 textarea.append("<br>");
-var socket = new WebSocket("ws://" + window.location.host + "/" + strip(window.location.pathname, "/") + "/broadcast");
+
+var ws_protocol = "ws://";
+if (window.location.protocol === "https:")
+    ws_protocol = "wss://";
+
+var socket = new WebSocket(ws_protocol + window.location.host + "/" + strip(window.location.pathname, "/") + "/broadcast");
 socket.onmessage = function (event) {
     if (typeof event.data === "string"){
         runner(event.data)
