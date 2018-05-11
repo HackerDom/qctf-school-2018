@@ -3,8 +3,6 @@ tokens = ["48cdeb21eb1949113707028710c65174d60695cf", "2ce8ab9d05a52503410635940
 
 TITLE = "Проблема мутантов"
 STATEMENT_TEMPLATE = '''
-## Проблема мутантов
-
 Ах, я чуть не забыл рассказать самое интересное!
 
 Вы слышали, что неделю назад у нас появился отдел исследований? Мы назвали его **Research & Obsession & Persistence**.
@@ -19,8 +17,13 @@ STATEMENT_TEMPLATE = '''
 
 Чтобы получить флаг, нужно запустить **getflag** и передать ему токен первым аргументом.
 Ваш токен: `{0}`
+
 Пример: `./getflag {0}`
+
+`nc insert.address.here 20002`
+
 [auth](/static/files/<task.id>/auth)
+
 [libc.so.6](/static/files/<task.id>/libc.so.6)
 '''
 

@@ -4,4 +4,4 @@ max_score: 1000
 checker: !SimplePyChecker
   source_path: check.py
 statement_generator: !SimplePyStatementGenerator
-source_path: generate.py
+  source_path: generate.py
