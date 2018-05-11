@@ -5,32 +5,25 @@
 #include <time.h>
 
 
-int debug = 0;
-
-
 void loading_bar(void) {
+    char *open_bc  = "\e[1m[\e[0m";
+    char *close_bc = "\e[1m]\e[0m\n";
+    
     srand(time(NULL));
     
     int max_size = 20;
-    fprintf(stdout, "\e[1m[\e[0m");
+    write(1, open_bc, 9);
     for (int i = 0; i < max_size; i++) {
         usleep(10000 * (rand() % 30));
         fprintf(stdout, "\x1b[33m#\x1b[0m");
         fflush(stdout);
     }
-    fprintf(stdout, "\e[1m]\e[0m\n");
+    write(1, close_bc, 10);
     fprintf(stdout, "\x1b[32m[+]\x1b[0m \e[1mCompleted!\e[0m\n\n");
 }
 
 void process(char *command) {
-    long buf = 0;
     
-    read(0, buf, 0);
-    write(1, buf, 0);
-    
-    asm(".intel_syntax noprefix\n\t"
-        "pop rdx; ret;"
-        ".att_syntax prefix");
 }
 
 void welcome(void) {
@@ -73,14 +66,14 @@ void login_panel(void) {
     fprintf(stdout, "\x1b[36m[*]\x1b[0m Enter command: ");
     fgets(&command, 250, stdin);
     
-    if (debug)
-        process(command);
+    process(command);
 }
 
 int main(int argc, char **argv) {
     setvbuf(stdin, NULL, _IONBF, 0);
     setvbuf(stdout, NULL, _IONBF, 0);
     setvbuf(stderr, NULL, _IONBF, 0);
+    alarm(60);
 
     welcome();
     login_panel();
