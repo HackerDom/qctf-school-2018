@@ -41,4 +41,4 @@ async def feed(request, ws, token):
 
 
 if __name__ == '__main__':
-    app.run("0.0.0.0", 8080, workers=4)
+    app.run(workers=4)
