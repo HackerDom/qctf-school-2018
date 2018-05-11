@@ -1,5 +1,5 @@
 !Task
-name: blacklisted-sqli
+name: terminal
 max_score: 250
 checker: !SimplePyChecker
   source_path: check.py

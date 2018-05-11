@@ -1,6 +1,6 @@
 version: '2'
 services:
-  blacklisted-sqli:
+  terminal:
     build: ./service
     restart: always
     depends_on:
@@ -10,7 +10,7 @@ services:
     image: nginx
     restart: always
     depends_on:
-      - blacklisted-sqli
+      - terminal
     ports:
       - "127.0.0.1:30008:80"
     volumes:
