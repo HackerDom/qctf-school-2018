@@ -2,13 +2,13 @@ FROM python:3.5
 
 ENV PYTHONUNBUFFERED 1
 
-RUN mkdir -p /app
-WORKDIR /app
+RUN mkdir -p /service/
+WORKDIR /service/
 
-COPY requirements.txt /app/
-RUN pip install --no-cache-dir -r requirements.txt
+COPY ./requirements.txt /service/
+RUN pip install --no-cache-dir -r ./requirements.txt
 
-COPY . /app
+COPY ./ ./
 
 EXPOSE 80
 
