@@ -103,7 +103,7 @@ class IndexView(web.View):
         self.log_request('Form: {}. {}'.format(repr(form), message), method)
 
 
-async def main():
+async def spawn_app():
     app = web.Application(middlewares=[IndexView.team_middleware])
 
     jinja_setup(app, loader=jinja2.FileSystemLoader('./templates/'))
@@ -114,6 +114,12 @@ async def main():
     app['tokens'] = {}
     app['db'] = await db_connect()
 
+    return app
+
+
+async def main():
+    app = await spawn_app()
+    
     runner = web.AppRunner(app)
     await runner.setup()
     site = web.TCPSite(runner)

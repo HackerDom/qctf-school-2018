@@ -1,5 +1,5 @@
-CREATE USER 'dbuser'@'localhost' IDENTIFIED BY 'zJ2plyhR9';
-GRANT SELECT ON cpanel.* TO 'dbuser'@'localhost';
+CREATE USER 'dbuser'@'%' IDENTIFIED BY 'zJ2plyhR9';
+GRANT SELECT ON cpanel.* TO 'dbuser'@'%';
 FLUSH PRIVILEGES;
 
 CREATE DATABASE cpanel;

@@ -1,5 +1,7 @@
 import re
 
+from time import sleep
+
 import aiomysql
 
 INSECURE_PATTERNS = [
@@ -29,12 +31,16 @@ class DbException(Exception):
 
 
 async def db_connect():
-    return await aiomysql.connect(
-        host='localhost',
-        user='dbuser', password='zJ2plyhR9', db='cpanel',
-        charset='utf8mb4',
-        cursorclass=aiomysql.DictCursor
-    )
+    while True:
+        try:
+            return await aiomysql.connect(
+                host='mysql',
+                user='dbuser', password='zJ2plyhR9', db='cpanel',
+                charset='utf8mb4',
+                cursorclass=aiomysql.DictCursor
+            )
+        except Exception:
+            sleep(10)
 
 
 def assert_secure(user_input):
