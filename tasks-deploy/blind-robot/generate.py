@@ -15,7 +15,7 @@ STATEMENT_TEMPLATE = '''
 
 Ему нужна ваша помощь. И внимательнее двигайтесь вдоль стен, вы же не хотите сломать робота об эти странные контуры?
 
-[Сайт](https://blind-robot.contest.qctf.ru/{0}/)
+Воспользуйтесь [панелью управления](https://blind-robot.contest.qctf.ru/{0}/).
 '''
 
 def generate(context):

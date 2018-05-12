@@ -6,16 +6,20 @@ RUN apt-get install -y xinetd libc6-i386 && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 
-RUN useradd -M oil
-RUN useradd -M --shell /bin/false getflag
+RUN useradd -M --shell /bin/false getflag && \
+    useradd -M oil
 
-
-COPY ./oil.xinetd /etc/xinetd.d/oil
-RUN chmod 400 /etc/xinetd.d/oil
+RUN echo "oil - nproc 1000" > /etc/security/limits.d/oil.conf && \
+    echo "getflag - nproc 1000" > /etc/security/limits.d/getflag.conf
 
 
 RUN mkdir /chroot
 WORKDIR /chroot
+
+RUN mkdir -p ./home/oil/
+
+RUN echo "cd /home/oil/ && ./oil" >./start.sh && \
+    chmod 555 ./start.sh
 
 
 RUN cp -R /lib* . && \
@@ -33,17 +37,11 @@ RUN mkdir ./bin/ && \
     cp /bin/ls ./bin/ && \
     cp /bin/cat ./bin/ && \
     cp /bin/pwd ./bin/ && \
-    cp /bin/bash ./bin/ && \
-    cp /usr/bin/whoami ./bin/
+    cp /usr/bin/whoami ./bin/ && \
+    ln -s /bin/sh ./bin/bash
 
 RUN mkdir ./etc/ && \
     cp /etc/passwd ./etc/
-
-
-RUN mkdir -p ./home/oil/
-
-RUN echo "cd /home/oil/ && ./oil" >./start.sh
-RUN chmod 555 ./start.sh
 
 RUN chown -R root:root .
 
@@ -61,10 +59,13 @@ COPY ./service/oil ./home/oil/
 RUN chmod 111 ./home/oil/oil
 
 
+COPY ./oil.xinetd /etc/xinetd.d/oil
 COPY ./xinetd_start.sh /xinetd_start.sh
-RUN chmod 100 /xinetd_start.sh
+
+RUN chmod 400 /etc/xinetd.d/oil && \
+    chmod 100 /xinetd_start.sh
+
 
 CMD ["/xinetd_start.sh"]
-
 
 EXPOSE 9999

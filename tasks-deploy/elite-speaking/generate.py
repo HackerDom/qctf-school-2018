@@ -3,9 +3,9 @@ tokens = ['16ae7061c82618fa9b966404a7bb17f6', 'a680fe0fda7193891171bdf7e56df418'
 
 TITLE = "Неизвестный язык"
 STATEMENT_TEMPLATE = '''
-!!! (нашли робота, который странно разговаривает) !!!
+Мы нашли робота, который странно разговаривает.
 
-[Сайт](https://elite-speaking.contest.qctf.ru/{0}/)
+Поговорите с ним в его [чате](https://elite-speaking.contest.qctf.ru/{0}/).
 '''
 
 def generate(context):

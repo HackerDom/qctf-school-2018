@@ -67,13 +67,16 @@ void manage(void) {
 }
 
 
+
+
 int main(int argc, char **argv) {
     setvbuf(stdin, NULL, _IONBF, 0);
     setvbuf(stdout, NULL, _IONBF, 0);
     setvbuf(stderr, NULL, _IONBF, 0);
 
-    printf("Welcome to Oil Platform Manager!\n");
-    
+    alarm(120);
+
+    printf("Welcome to Oil Platform Manager!\n");    
     manage();
     
     printf("Bye.\n");

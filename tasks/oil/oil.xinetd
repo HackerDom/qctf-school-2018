@@ -7,6 +7,7 @@ service oil
   bind = 0.0.0.0
   port = 9999
   wait = no
+  instances = 1000
   user = root
   server = /usr/sbin/chroot
   server_args = --userspec=oil:oil /chroot /start.sh
