@@ -1,5 +1,7 @@
 TITLE = 'mysterious-photo'
-STATEMENT = '''[photo](/static/files/.../photo.jpg)'''
+STATEMENT = '''
+[photo](/static/files/7bjf8qvcne/photo.jpg)
+'''
 
 
 def generate(context):
