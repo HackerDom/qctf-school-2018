@@ -5,6 +5,8 @@ services:
     restart: always
     depends_on:
       - mysql
+    volumes:
+      - ./service/logs:/service/logs
 
   nginx:
     image: nginx
