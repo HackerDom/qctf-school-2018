@@ -1,9 +1,10 @@
-﻿TITLE = "Шеф-повар"
+TITLE = "Шеф-повар"
 STATEMENT_TEMPLATE = '''
 Нашего повара похитили. Он оставил какой-то рецепт, мы перехватили радиограмму, кажется всё это связано...
 
 Радиограмма: `{}`
-[Рецепт](/static/files/<task.id>/task.chef)
+
+[Рецепт](/static/files/h9xesglm8a/task.chef)
 '''
 
 def generate(context):
