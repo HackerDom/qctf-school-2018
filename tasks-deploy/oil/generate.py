@@ -15,6 +15,8 @@ STATEMENT_TEMPLATE = '''
 
 Пример: `./getflag {0}`
 
+`nc oil.contest.qctf.ru 20001`
+
 [oil](/static/files/<task.id>/oil)
 
 [oil.c](/static/files/<task.id>/oil.c)
