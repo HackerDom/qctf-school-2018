@@ -23,9 +23,9 @@ STATEMENT_TEMPLATE = '''
 
 `nc hard-pwn.contest.qctf.ru 20002`
 
-[auth](/static/files/<task.id>/auth)
+[auth](/static/files/4rycqtnt3s/auth)
 
-[libc.so.6](/static/files/<task.id>/libc.so.6)
+[libc.so.6](/static/files/4rycqtnt3s/libc.so.6)
 '''
 
 def generate(context):
