@@ -1,8 +1,6 @@
 TITLE='USBrip'
 STATEMENT_TEMPLATE='''
-
-Смотрите [логи](/static/<task-id>/{})
-
+Смотрите [логи](/static/files/n7vngt3izm/{}.log)
 '''
 
 def generate(context):
