@@ -27,7 +27,7 @@ def task():
     team_id = session['team_id']
     if request.method == 'GET':
         stage = get_task(team_id).stage
-        if stage > 10000:
+        if stage > 1000:
             user = get_user(team_id)
             return user.flag
         else:
