@@ -1,19 +1,26 @@
-<link rel="stylesheet" href="/static/style.css" type="text/css">
-{% block body %}
- 
-<form action="/task" method="POST">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+<link rel="stylesheet" href="/static/style.css" type="text/css"> {% block body %}
+
+<form action="/task" method="POST" class="task">
     <div class="app-title">
         <h1>Stage {{ stage }}</h1>
     </div>
-
-    {{ task }}
-    <br>
-
-    <input type="text" name="answer" placeholder="3 Sep">
+    <div class="task_value">
+        {% for task_value in task %}
+        <div class="task_button btn btn-info" onclick="document.querySelector('#answer').value='{{task_value}}'">{{task_value}}</div>
+        {% endfor %}
     </div>
+    <div class="form-row">
+        <div class="col task_input">
+            <input type="text" name="answer" placeholder="3 Sep" id="answer" class="form-control">
+        </div>
+        <div class="col-auto task_check">
+            <input type="submit" value="Check" class="btn btn-primary btn-block">
+        </div>
 
-    <input type="submit" value="Check">
-    <br>
+
+    </div>
 </form>
- 
+
 {% endblock %}

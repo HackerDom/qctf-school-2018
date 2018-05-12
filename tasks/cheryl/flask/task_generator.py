@@ -24,4 +24,4 @@ def generate():
                 res.append('{} {}'.format(days[y], monthes[x]))
 
     shuffle(res)
-    return answer, ', '.join(res)
+    return answer, res
