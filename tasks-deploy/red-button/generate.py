@@ -3,9 +3,11 @@ tokens = ['46f77144cee0b420f195b09eb539debd', '412da70b5cb8499c7c8da22121bc3cd1'
 
 TITLE = "Красная кнопка"
 STATEMENT_TEMPLATE = '''
-!!! (опасная кнопка, один раз нажали, итд) !!!
+Говорят, что именно с этой кнопки всё и началось.
 
-[Сайт](https://red-button.contest.qctf.ru/{0}/)
+За много лет она запылилась и потеряла свой цвет, но её функции остались неизменными. 
+
+А вот и [она](https://red-button.contest.qctf.ru/{0}/).
 '''
 
 def generate(context):
