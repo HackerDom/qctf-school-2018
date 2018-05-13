@@ -1,0 +1,41 @@
+.wrapper {
+    text-align: center;
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    display: table;
+}
+
+.line {
+    width: 250px;
+    height: 75px;
+    display: table-row;
+}
+
+#myrobot {
+    vertical-align: bottom;
+    margin-bottom: 1px;
+    padding-left: 1px;
+    padding-right: 1px;
+}
+
+.movebtn {
+    user-select: none;
+    vertical-align: middle;
+    display: inline-block;
+    width: 75px;
+    line-height: 75px;
+    border: 1px solid #aaaaaa;
+    background: #eeeeee;
+}
+
+.lvlbtn {
+    margin: 2px;
+    width: 115px;
+    height: 25px;
+}
+
+#error {
+    color: #FF0000;
+    font-weight: bold;
+}

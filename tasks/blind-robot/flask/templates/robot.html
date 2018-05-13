@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Blind Robot</title>
+        <link rel="stylesheet" type="text/css" href="/assets/styles.css">
+    </head>
+    <body>
+        <div class="wrapper">
+            <h1>You can use arrows on your keyboard.</h3>
+            <div class="line">
+                <div class="movebtn" onclick="move(0, -1)">Up</div>
+            </div>
+            <div class="line">
+                <div class="movebtn" onclick="move(-1, 0)">Left</div>
+                <canvas id="myrobot">
+                    YOUR BROWSER DOESN'T SUPPORT CANVAS GRAPHICS!
+                </canvas>
+                <div class="movebtn" onclick="move(1, 0)">Right</div>
+            </div>
+            <div class="line">
+                <div class="movebtn" onclick="move(0, 1)">Down</div>
+            </div>
+            <div class="line">
+                <input type="button" class="lvlbtn" value="Previous" onclick="change_level(-1)" />
+                <input type="button" class="lvlbtn" value="Next" onclick="change_level(1)" />
+            </div>
+            <h3 id="error"></h3>
+        </div>
+        <script type="text/javascript" src="/assets/robot.js"></script>
+    </body>
+</html>

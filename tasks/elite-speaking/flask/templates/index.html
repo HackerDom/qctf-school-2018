@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Elite Speaking</title>
+        <link rel="stylesheet" type="text/css" href="/assets/styles.css" />
+    </head>
+    <body onload="startMessaging()">
+        <div class="wrapper">
+            <div id="chatArea"></div>
+            <form action="#" onsubmit="sendMessage(); return false;">
+                <input type="text" id="userMessage" />
+                <input type="submit" value="Send" class="sendButton" />
+            </form>
+        </div>
+        <script type="text/javascript">secret = {{ secret }};</script>
+        <script type="text/javascript" src="/assets/chat.js"></script>
+    </body>
+</html>
