@@ -1,0 +1,7 @@
+version: '2'
+services:
+  hard-pwn:
+    build: .
+    restart: always
+    ports:
+      - "0.0.0.0:20002:9999"
