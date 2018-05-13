@@ -2,9 +2,11 @@ tokens = ['KNIAJRPREP4ULQKZEQER0HSRDJF3O7Z8', 'L5J7E0PI3INYJQSBPCTUQUUTMDPU6KN9'
 
 TITLE = "Генератор флагов"
 STATEMENT_TEMPLATE = '''
-Хочешь получить флаг? 
+Псс, хочешь получить флаг? 
 
-Ничего сложного, просто скажи мне свой токен и я скажу кто... в смысле, флаг сгенерирую, да :)
+Ничего сложного, я могу это устроить.
+
+Вот программа. Всё, что тебе нужно, это... (__помехи__)
 
 [flagogenerator](/static/files/cm3py0wxnk/{0}/flagogenerator)
 '''
