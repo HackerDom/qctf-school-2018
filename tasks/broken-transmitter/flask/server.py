@@ -41,7 +41,7 @@ def show(token):
     if TOKENS[token][1] + PART_LENGTH > len(message):
         TOKENS[token] = (time(), 0)
 
-    return render_template('show.html', message=message[TOKENS[token][1]:TOKENS[token][1] + PART_LENGTH])
+    return render_template('show.html', message=tohex(message[TOKENS[token][1]:TOKENS[token][1] + PART_LENGTH]))
 
 
 if __name__ == '__main__':
