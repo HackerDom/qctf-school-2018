@@ -11,7 +11,7 @@ STATEMENT_TEMPLATE = '''
 
 `nc secure-library.contest.qctf.ru 20003`
 
-[library](/static/files/<task.id>/library)
+[library](/static/files/3rl6qrj3w2/library)
 '''
 
 def generate(context):
