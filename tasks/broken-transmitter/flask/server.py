@@ -18,7 +18,7 @@ TEXT = '''Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmo
 
 def tohex(text):
     hexcode = lambda symbol: hex(ord(symbol))[2:].zfill(2)
-    ' '.join(map(hexcode, result))
+    return ' '.join(map(hexcode, text))
     
 
 @app.route('/')
@@ -28,12 +28,13 @@ def wrong_token():
 
 @app.route('/<token>/')
 def show(token):
+    if token not in flags:
+        return redirect(url_for('wrong_token'))
+    
     global TOKENS
     flag = flags[token]
     message = TEXT + flag
 
-    if token not in flags:
-        return redirect(url_for('wrong_token'))
     if token not in TOKENS:
         TOKENS[token] = (time(), 0)
     elif time() - TOKENS[token][0] > DELAY:
