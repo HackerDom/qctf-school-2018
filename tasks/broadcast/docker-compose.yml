@@ -1,0 +1,15 @@
+version: '2'
+services:
+  broadcast:
+    build: ./service
+    restart: always
+
+  nginx:
+    image: nginx
+    restart: always
+    depends_on:
+      - broadcast
+    ports:
+      - "127.0.0.1:30009:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
