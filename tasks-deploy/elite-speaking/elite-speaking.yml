@@ -1,6 +1,6 @@
 !Task
 name: elite-speaking
-max_score: 100
+max_score: 50
 checker: !SimplePyChecker
   source_path: check.py
 statement_generator: !SimplePyStatementGenerator

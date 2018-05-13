@@ -1,6 +1,6 @@
 !Task
 name: bar
-max_score: 250
+max_score: 300
 checker: !SimplePyChecker
   source_path: check.py
 statement_generator: !SimplePyStatementGenerator

@@ -1,6 +1,6 @@
 !Task
 name: dfa
-max_score: 500
+max_score: 450
 checker: !SimplePyChecker
   source_path: check.py
 statement_generator: !SimplePyStatementGenerator

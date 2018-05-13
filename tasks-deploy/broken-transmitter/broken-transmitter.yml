@@ -1,6 +1,6 @@
 !Task
 name: broken-transmitter
-max_score: 200
+max_score: 250
 checker: !SimplePyChecker
   source_path: check.py
 statement_generator: !SimplePyStatementGenerator

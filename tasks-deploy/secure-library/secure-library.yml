@@ -1,6 +1,6 @@
 !Task
 name: secure-library
-max_score: 300
+max_score: 350
 checker: !SimplePyChecker
   source_path: check.py
 statement_generator: !SimplePyStatementGenerator

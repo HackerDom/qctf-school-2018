@@ -1,6 +1,6 @@
 !Task
 name: hard-pwn
-max_score: 1000
+max_score: 500
 checker: !SimplePyChecker
   source_path: check.py
 statement_generator: !SimplePyStatementGenerator

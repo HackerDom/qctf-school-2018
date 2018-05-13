@@ -1,6 +1,6 @@
 !Task
 name: red-button
-max_score: 300
+max_score: 250
 checker: !SimplePyChecker
   source_path: check.py
 statement_generator: !SimplePyStatementGenerator
