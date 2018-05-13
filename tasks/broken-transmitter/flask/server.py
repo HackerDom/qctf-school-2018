@@ -13,7 +13,7 @@ reader = Reader(
     filename='text.txt', 
     flag_length=len(list(flags.values())[0]), 
     step=16, 
-    delay=15
+    delay=3
 )
 
 
