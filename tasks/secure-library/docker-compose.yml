@@ -1,0 +1,7 @@
+version: '2'
+services:
+  library:
+    build: .
+    restart: always
+    ports:
+      - "0.0.0.0:20003:9999"
