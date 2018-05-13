@@ -1,5 +1,5 @@
 !Task
-name: Unicode
+name: unicode
 max_score: 50
 checker: !SimplePyChecker
   source_path: check.py
