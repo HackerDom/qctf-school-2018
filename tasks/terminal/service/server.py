@@ -102,7 +102,9 @@ class IndexView(web.View):
         self.log_request('Form: {}. {}'.format(repr(form), message), method)
 
 
-async def spawn_app(loop):
+async def spawn_app(loop=None):
+    if not loop:
+        loop = asyncio.get_event_loop()
     app = web.Application(middlewares=[IndexView.team_middleware])
 
     jinja_setup(app, loader=jinja2.FileSystemLoader('./templates/'))
