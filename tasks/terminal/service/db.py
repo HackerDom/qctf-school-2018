@@ -30,14 +30,15 @@ class DbException(Exception):
     pass
 
 
-async def db_connect():
+async def db_connect(loop):
     while True:
         try:
-            return await aiomysql.connect(
+            return await aiomysql.create_pool(
                 host='mysql',
                 user='dbuser', password='zJ2plyhR9', db='cpanel',
                 charset='utf8mb4',
-                cursorclass=aiomysql.DictCursor
+                cursorclass=aiomysql.DictCursor,
+                loop=loop
             )
         except Exception:
             sleep(10)
@@ -59,8 +60,9 @@ async def find_user(db, login, password):
     sql = "SELECT * FROM `users`" \
           "WHERE `login`='{}' AND `password`='{}'".format(login, password)
     try:
-        async with db.cursor() as cursor:
-            await cursor.execute(sql)
-            return await cursor.fetchone()
+        async with db.get() as conn:
+            async with conn.cursor() as cursor:
+                await cursor.execute(sql)
+                return await cursor.fetchone()
     except Exception as e:
         raise DbException('Failed to execute query {}: {}'.format(sql, e))
