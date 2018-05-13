@@ -23,9 +23,9 @@ STATEMENT_TEMPLATE = '''
 
 `nc oil.contest.qctf.ru 20001`
 
-[oil](/static/files/<task.id>/oil)
+[oil](/static/files/w12b28c7aq/oil)
 
-[oil.c](/static/files/<task.id>/oil.c)
+[oil.c](/static/files/w12b28c7aq/oil.c)
 '''
 
 def generate(context):
