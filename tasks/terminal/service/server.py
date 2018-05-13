@@ -103,6 +103,10 @@ class IndexView(web.View):
 
 
 async def spawn_app(loop=None):
+    logging.basicConfig(
+        level=logging.DEBUG,
+        format='[%(asctime)s] [%(levelname)s] %(message)s)'
+    )
     if not loop:
         loop = asyncio.get_event_loop()
     app = web.Application(middlewares=[IndexView.team_middleware])
@@ -129,10 +133,6 @@ async def main(loop):
 
 
 if __name__ == '__main__':
-    logging.basicConfig(
-        level=logging.DEBUG,
-        format='[%(asctime)s] [%(levelname)s] %(message)s)'
-    )
     loop = asyncio.get_event_loop()
     loop.run_until_complete(main(loop))
     loop.run_forever()
