@@ -1,0 +1,12 @@
+1. cat task.txt | base64 -d > decoded
+2. binwalk decoded
+3. Видим, что внутри zip и gzip, zip 0-225, gzip 226-271, где 271 - конец decoded
+4. head -c226 decoded > 1.zip
+5. Длинна decoded - начало gz = 45
+6. tail -c45 decoded > 2.gz
+7. В 2.gz лежит пароль от архива 1.zip
+8. ...
+9. Флаг: QCTF{ABCDEFGHIJKLMNOPQRSTUVWXYZ}
+
+
+P.S. Bar = base + archive

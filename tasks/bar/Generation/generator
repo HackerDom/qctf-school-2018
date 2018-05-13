@@ -1,0 +1,15 @@
+#!/bin/bash
+#For generation: ./generator QCTF{**************************} password_for_archive
+
+password=$2
+echo -n $password > flag
+gzip flag
+mv flag.gz 00
+echo -n $1 > flag.txt
+zip -P $password flag.zip flag.txt
+cat flag.zip 00 > res.zip
+cat res.zip | base64 -w 0
+rm 00
+rm flag.zip
+rm res.zip
+rm flag.txt
