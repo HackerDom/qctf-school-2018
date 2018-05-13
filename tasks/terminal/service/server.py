@@ -1,6 +1,5 @@
 import asyncio
 import logging
-import os
 import uuid
 from hashlib import md5
 
@@ -103,7 +102,7 @@ class IndexView(web.View):
         self.log_request('Form: {}. {}'.format(repr(form), message), method)
 
 
-async def spawn_app():
+async def spawn_app(loop):
     app = web.Application(middlewares=[IndexView.team_middleware])
 
     jinja_setup(app, loader=jinja2.FileSystemLoader('./templates/'))
@@ -112,28 +111,26 @@ async def spawn_app():
     app.router.add_static('/static/', path='./static')
 
     app['tokens'] = {}
-    app['db'] = await db_connect()
+    app['db'] = await db_connect(loop)
 
     return app
 
 
-async def main():
-    app = await spawn_app()
+async def main(loop):
+    app = await spawn_app(loop)
     
     runner = web.AppRunner(app)
     await runner.setup()
     site = web.TCPSite(runner)
     await site.start()
+    print("Started")
 
 
 if __name__ == '__main__':
-    logs_directory = os.path.join('.', 'logs')
-    os.makedirs(logs_directory, exist_ok=True)
     logging.basicConfig(
         level=logging.DEBUG,
-        format='[%(asctime)s] [%(levelname)s] %(message)s)',
-        filename=os.path.join(logs_directory, 'log.txt')
+        format='[%(asctime)s] [%(levelname)s] %(message)s)'
     )
     loop = asyncio.get_event_loop()
-    loop.run_until_complete(main())
+    loop.run_until_complete(main(loop))
     loop.run_forever()
