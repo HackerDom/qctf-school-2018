@@ -8,6 +8,9 @@ from tokens import flags
 
 
 app = Flask(__name__)
+app.config.update(dict(
+    PREFERRED_URL_SCHEME = 'https'
+))
 
 
 @app.route('/')
