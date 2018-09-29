@@ -9,17 +9,17 @@
 * Alexey Zakharov
 * Artur Liss
 * Vladimir Cherepanov
-* Maria of the Ninths
+* Maria Devyatykh
 * Mikhail Gnedashev
 * Mikhail Evdokimov
 * Roman Bykov
 
-### Разработчики проверяющей системы
+### Entwickler des Verifizierungssystems
 
 * Andrey Gein
 * Mikhail Gnedashev
 
-### Системные администраторы
+### Systemadministratoren
 
 * Mikhail Gnedashev
 * Vladimir Cherepanov
@@ -33,7 +33,7 @@
 
 * Alexander Alexeev
 * Alexandra Durasova
-* Alsou Zainullina
+* Alsu Zainullina
 * Vikenty Kotvitsky
 * Zinaida Guseva
 

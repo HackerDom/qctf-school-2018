@@ -1,6 +1,6 @@
-### Director of competitions
+### Director of the competition
 
-* Maria Kiskiqi
+* Maria Kiskachi
 
 ### Developers of tasks
 
@@ -9,19 +9,19 @@
 * Alexey Zakharov
 * Artur Liss
 * Vladimir Cherepanov
-* Maria der Neunten
-* Mikhail Gedaschew
-* Michail Evdokimow
-* Roman Bykow
+* Maria Devyatykh
+* Mikhail Gnedashev
+* Mikhail Evdokimov
+* Roman Bykov
 
-### Entwickler des Verifizierungssystems
+### Checksystem developers
 
-* Andrej Gein
-* Michail Gnedaschew
+* Andrey Gein
+* Michail Gnedashev
 
-### Systemadministratoren
+### System administrators
 
-* Michail Gnedaschew
+* Michail Gnedashev
 * Vladimir Cherepanov
 
 ### Designers
@@ -33,7 +33,7 @@
 
 * Alexander Alexeev
 * Alexandra Durasova
-* Alsou Zainullina
+* Alsu Zainullina
 * Vikenty Kotvitsky
 * Zinaida Guseva
 
